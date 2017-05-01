@@ -1,0 +1,16 @@
+# Запускать демон, если задано "yes"
+START_DAEMON="yes"
+
+# Путь к файлу конфигурации
+#CONFIGFILE="/etc/minidlna.conf"
+
+# Путь к лог-файлу
+#LOGFILE="/var/log/minidlna.log"
+
+# Запуск от имени заданного пользователя и группы
+# По умолчанию: minidlna
+USER=root
+GROUP=root
+
+# Дополнительные ключи запуска
+DAEMON_OPTS=""
