@@ -5,7 +5,7 @@
 # Pull base image.
 FROM debian:jessie-slim
 
-MAINTAINER @dva_re <i@dva.re>
+MAINTAINER dvare
 
 # Add config files
 ADD minidlna.conf /etc/minidlna.conf
@@ -26,7 +26,7 @@ RUN \
   ./configure && \
   make && make install && \
   rm -rf /tmp/midlna && \
-  apt-get remove --purge -y autopoint debhelper dh-autoreconf gcc && \
+  apt-get remove --purge -y autopoint debhelper dh-autoreconf gcc git && \
   apt-get clean -y && apt-get autoclean -y && apt-get autoremove -y && \
   rm -rf /var/cache/debconf/*-old && rm -rf /var/lib/apt/lists/* && rm -rf /usr/share/doc/* && \
   update-rc.d minidlna defaults
