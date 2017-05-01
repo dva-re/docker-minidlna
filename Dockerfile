@@ -12,6 +12,9 @@ ADD minidlna.conf /etc/minidlna.conf
 ADD minidlna /etc/default/minidlna
 ADD init.d_minidlna /etc/init.d/minidlna
 
+# Add starter 
+ADD start.sh /root/start.sh
+
 # Install MiniDLNA(ReadyMedia).
 RUN \
   apt-get update && \
@@ -29,14 +32,11 @@ RUN \
   apt-get remove --purge -y autopoint debhelper dh-autoreconf gcc git && \
   apt-get clean -y && apt-get autoclean -y && apt-get autoremove -y && \
   rm -rf /var/cache/debconf/*-old && rm -rf /var/lib/apt/lists/* && rm -rf /usr/share/doc/* && \
-  update-rc.d minidlna defaults
+  chmod +x /etc/init.d/minidlna && chmod +x /root/start.sh && update-rc.d minidlna defaults
 
 # Define mountable directories.
 VOLUME /media
 VOLUME /config
-
-# Add starter 
-ADD start.sh /root/start.sh
 
 # Define default command.
 CMD ["/bin/bash", "/root/start.sh"]
